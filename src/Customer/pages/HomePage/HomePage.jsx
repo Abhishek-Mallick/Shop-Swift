@@ -7,7 +7,10 @@ const HomePage = () => {
         <div>
             <MainCarousel />
 
-            <div>
+            <div className='spacy-y-10 py-20 flex flex-col justify-center px-5 lg:px-10'>
+                <HomeSectionCarousel />
+                <HomeSectionCarousel />
+                <HomeSectionCarousel />
                 <HomeSectionCarousel />
             </div>
         </div>
