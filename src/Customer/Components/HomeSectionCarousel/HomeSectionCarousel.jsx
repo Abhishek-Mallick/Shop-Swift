@@ -4,6 +4,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
 import { Button } from "@mui/material";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import { mens_kurta } from "../../../Data/mens_kurta";
 
 const HomeSectionCarousel = () => {
     const [ activeIndex, setActiveIndex ] = useState(0);
@@ -14,20 +15,19 @@ const HomeSectionCarousel = () => {
     1024: { items: 5.5 },
   };
 
-  const slidePrev = () => setActiveIndex(activeIndex - 1);
-  const slideNext = () => setActiveIndex(activeIndex + 1);
+  const slidePrev=()=>setActiveIndex(activeIndex - 1);
+  const slideNext=()=>setActiveIndex(activeIndex + 1);
 
   const syncActiveIndex=({item})=>setActiveIndex(item);
 
-  const items = [1, 1, 1, 1, 1,1, 1, 1, 1, 1,1, 1, 1, 1, 1].map((item) => <HomeSectionCard />);
+  const items = mens_kurta.slice(0,10).map((item) => <HomeSectionCard product={item}/>);
 
   return (
-    <div className="px-4 lg:px-8">
+    <div className="border">
       <div className="relative p-5">
         <AliceCarousel
           items={items}
           disableButtonsControls
-          infinite
           responsive={responsive}
           disableDotsControls
           onSlideChange={syncActiveIndex}
@@ -51,7 +51,7 @@ const HomeSectionCarousel = () => {
           />
         </Button>}
 
-        {activeIndex !== 5 && <Button
+        {activeIndex !== 0 && <Button
           variant="contained"
           className="z-50 bg-white"
           onClick={slidePrev}
