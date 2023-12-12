@@ -3,7 +3,7 @@ import MainCarousel from '../../Components/HomeCarousel/MainCarousel';
 import HomeSectionCarousel from '../../Components/HomeSectionCarousel/HomeSectionCarousel';
 import { mens_kurta } from '../../../Data/mens_kurta';
 import { mens_shirt } from '../../../Data/mens_shirt';
-import { mens_shoes } from '../../../Data/mens_shoes';
+// import { mens_shoes } from '../../../Data/mens_shoes';
 
 const HomePage = () => {
     return (
