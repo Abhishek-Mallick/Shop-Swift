@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { RadioGroup } from '@headlessui/react'
+import { Button, Grid, Rating } from '@mui/material'
+import ProductReviewCard from './ProductReviewCard'
 
 const product = {
   name: 'Basic Tee 6-Pack',
@@ -34,14 +36,9 @@ const product = {
     { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' },
   ],
   sizes: [
-    { name: 'XXS', inStock: false },
-    { name: 'XS', inStock: true },
     { name: 'S', inStock: true },
     { name: 'M', inStock: true },
     { name: 'L', inStock: true },
-    { name: 'XL', inStock: true },
-    { name: '2XL', inStock: true },
-    { name: '3XL', inStock: true },
   ],
   description:
     'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
@@ -65,7 +62,7 @@ export default function ProductDetails() {
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
 
   return (
-    <div className="bg-white">
+    <div className="bg-white lg:px-20">
       <div className="pt-6">
         <nav aria-label="Breadcrumb">
           <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -122,81 +119,37 @@ export default function ProductDetails() {
         <div className="lg:cols-span-1 max-auto max-w-2xl px-4 pb-16 sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-24">
           <div className="lg:col-span-2">
             <h1 className="text-lg lg:text-xl font-semibold text-gray-900">Brand Name</h1>
-            <h1>Titile</h1>
+            <h1 className='text-lg lg:text-xl text-gray-900 opacity-60 pt-1'>Titile</h1>
           </div>
 
           {/* Options */}
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
-            <p className="text-3xl tracking-tight text-gray-900">{product.price}</p>
+            <div className='flex space-x-5 item-center text-lg lg:text-xl text-gray-900 mt-6'>
+                <p className='font-semibold'>
+                    ₹2000
+                </p>
+                <p className='line-through opacity-50'>
+                    ₹2200
+                </p>
+                <p className='text-green-600 font-semibold'>5% off</p>
+            </div>
 
             {/* Reviews */}
             <div className="mt-6">
-              <h3 className="sr-only">Reviews</h3>
-              <div className="flex items-center">
-                <div className="flex items-center">
-                  {[0, 1, 2, 3, 4].map((rating) => (
-                    <StarIcon
-                      key={rating}
-                      className={classNames(
-                        reviews.average > rating ? 'text-gray-900' : 'text-gray-200',
-                        'h-5 w-5 flex-shrink-0'
-                      )}
-                      aria-hidden="true"
-                    />
-                  ))}
+                <div className='flex item-center space-x-3'>
+                <Rating name="read-only" value={4} readOnly />
+                <p className='text-sm text-gray-500'>4800 Ratings</p>
+                <p className='ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500'>2000 Reviews </p>
                 </div>
-                <p className="sr-only">{reviews.average} out of 5 stars</p>
-                <a href={reviews.href} className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                  {reviews.totalCount} reviews
-                </a>
-              </div>
             </div>
 
             <form className="mt-10">
-              {/* Colors */}
-              <div>
-                <h3 className="text-sm font-medium text-gray-900">Color</h3>
-
-                <RadioGroup value={selectedColor} onChange={setSelectedColor} className="mt-4">
-                  <RadioGroup.Label className="sr-only">Choose a color</RadioGroup.Label>
-                  <div className="flex items-center space-x-3">
-                    {product.colors.map((color) => (
-                      <RadioGroup.Option
-                        key={color.name}
-                        value={color}
-                        className={({ active, checked }) =>
-                          classNames(
-                            color.selectedClass,
-                            active && checked ? 'ring ring-offset-1' : '',
-                            !active && checked ? 'ring-2' : '',
-                            'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none'
-                          )
-                        }
-                      >
-                        <RadioGroup.Label as="span" className="sr-only">
-                          {color.name}
-                        </RadioGroup.Label>
-                        <span
-                          aria-hidden="true"
-                          className={classNames(
-                            color.class,
-                            'h-8 w-8 rounded-full border border-black border-opacity-10'
-                          )}
-                        />
-                      </RadioGroup.Option>
-                    ))}
-                  </div>
-                </RadioGroup>
-              </div>
 
               {/* Sizes */}
               <div className="mt-10">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-medium text-gray-900">Size</h3>
-                  <a href="#" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                    Size guide
-                  </a>
                 </div>
 
                 <RadioGroup value={selectedSize} onChange={setSelectedSize} className="mt-4">
@@ -252,12 +205,9 @@ export default function ProductDetails() {
                 </RadioGroup>
               </div>
 
-              <button
-                type="submit"
-                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-              >
-                Add to bag
-              </button>
+              <Button color='secondary' variant='contained' sx={{px:"2rem",py:"1rem"}}>
+                Add to Cart
+              </Button>
             </form>
           </div>
 
@@ -296,7 +246,26 @@ export default function ProductDetails() {
         </div>
         </section>
 
-
+        {/* Rating and reviews */}
+        <section>
+            <h1 className='font-semibold text-lg pb-4'>Recent rating and reviews</h1>
+            <div className='border p-5'>
+                    <Grid container spacing={7}>
+                        <Grid item xs={7}>
+                            <div className='space-y-5'>
+                                {[1,1,1,1].map((item)=><ProductReviewCard />)}
+                            </div>
+                        </Grid>
+                        <Grid item xs={5}>
+                            <h1 className='text-xl font-semibold pb-1'>Product Ratings</h1>
+                            <div className='flex item-center space-x-3'>
+                                <Rating name='read-only' value={4.5} readonly precision={0.5}/>
+                                <p className='opacity-60'>2800 Ratings</p>
+                            </div>
+                        </Grid>
+                    </Grid>
+            </div>
+        </section>            
 
 
       </div>
