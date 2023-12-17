@@ -7,7 +7,7 @@ import ProductCard from './ProductCard'
 import { filters, singleFilter } from './FilterData'
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material'
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 
 const sortOptions = [
   { name: 'Price: Low to High', href: '#', current: false },
@@ -22,6 +22,13 @@ export default function Product() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const location = useLocation();
   const navigate = useNavigate();
+
+  const { levelOne, levelTwo, levelThree } = useParams();
+
+  console.log('levelOne:', levelOne);
+  console.log('levelTwo:', levelTwo);
+  console.log('levelThree:', levelThree);
+
   const handleFilter = (value, sectionId) => {
     const searchParams = new URLSearchParams(location.search);
 

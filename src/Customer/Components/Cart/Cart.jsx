@@ -1,8 +1,15 @@
 import React from 'react';
 import CartItem from './CartItem';
 import { Button, Divider } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
+
+    const navigate = useNavigate();
+    const handleCheckout = () => {
+        navigate(`/checkout?step=2`)
+    }
+
     return (
         <div>
             <div className='lg:grid grid-cols-3 lg:px-16 relative'>
@@ -34,7 +41,7 @@ const Cart = () => {
                             <span className='text-blue-600'>₹6000</span>
                         </div>
                     </div>
-                    <Button className='w-full mt-5' color='secondary' variant='contained' sx={{px:"0.7rem",py:"0.5rem"}}>
+                    <Button onClick={handleCheckout} className='w-full mt-5' color='secondary' variant='contained' sx={{px:"0.7rem",py:"0.5rem"}}>
                         Checkout
                     </Button>
                 </div>
