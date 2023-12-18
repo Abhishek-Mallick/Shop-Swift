@@ -9,16 +9,16 @@
   - [ ] Integrate MySQL for data storage
 
 - [ ] **Frontend Development:**
-  - [ ] Setting up React application with cors and axios
+  - [x] Setting up React application with cors and axios
   - [ ] Create responsive UI components(carousel and cards)
   - [ ] Implement product catalog and search
   - [ ] Develop shopping cart and checkout system
   - [ ] Integrate JWT for frontend user authentication
 
 - [ ] **Styling:**
-  - [ ] Integrate MUI for UI components
-  - [ ] Customize Material-UI components
-  - [ ] Enhance styling with Tailwind CSS
+  - [x] Integrate MUI for UI components
+  - [x] Customize Material-UI components
+  - [x] Enhance styling with Tailwind CSS
 
 - [ ] **Connection and Communication:**
   - [ ] Implement CORS for frontend-backend communication
