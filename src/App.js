@@ -13,18 +13,12 @@ import CustomerRouters from './Routers/CustomerRouters';
 
 function App() {
   return (
-    <div className="">
+    <div>
       {/* All paths which hits / will go to CustomerRouters */}
       {/* Later to implement admin route */}
       <Routes>
         <Route path='/*' element={<CustomerRouters />}></Route>
       </Routes>
-
-      
-      <div>
-
-        {/* <OrderDetails /> */}
-      </div>
 
     </div>
   );
